@@ -1,0 +1,34 @@
+<div class="dashboard-container">
+  <div class="stat-box user">
+    <h2>👤 Users</h2>
+    <p>{{ userCount }}</p>
+  </div>
+
+  <div class="stat-box product">
+    <h2>🛒 Products</h2>
+    <p>{{ productCount }}</p>
+  </div>
+  
+</div>
+<div class="feedback-dashboard">
+  <h2>All Feedbacks</h2>
+
+  <div *ngIf="feedbacks.length > 0; else noFeedback">
+    <div *ngFor="let fb of feedbacks" class="feedback-card">
+      <div class="feedback-header">
+        <span class="username">&#64;{{ usernames[fb.userId] || 'Loading...' }}</span>
+        <span class="date">{{ fb.date | date:'medium' }}</span>
+        <span>   {{fb.productId}}&nbsp; &nbsp;    {{fb.productName}}</span>
+      </div>
+    
+      
+      <p class="message">{{ fb.message }}</p>
+      <button class="remove-btn" (click)="removeFeedback(fb.id)">remove</button>
+    </div>
+
+  </div>
+
+  <ng-template #noFeedback>
+    <p class="empty">No feedbacks available.</p>
+  </ng-template>
+</div>

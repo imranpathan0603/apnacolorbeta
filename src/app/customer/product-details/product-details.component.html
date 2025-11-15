@@ -1,0 +1,50 @@
+<div class="product-details-container" *ngIf="product">
+    <div class="left">
+      <img [src]="getProductImageUrl(product.id)" alt="{{ product.name }}" class="product-image" />
+    </div>
+    <div class="right">
+      <h2>{{ product.name }}</h2>
+      <p><strong>Brand:</strong> {{ product.brand }}</p>
+      <p><strong>Type:</strong> {{ product.type }}</p>
+      <p><strong>Color:</strong> {{ product.color }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p class="price"><strong>Price:</strong> {{ product.price | currency: 'INR' }}</p>
+      <button class="add-to-cart-btn" (click)="addToCart(product.id)">Add to Cart</button>
+    </div>
+  </div>
+  
+  <div class="feedback-section">
+    <h3>Customer Feedback</h3>
+      <!-- Feedback submission form -->
+      <div class="feedback-form">
+        <h4>Leave your feedback</h4>
+        <textarea
+          [(ngModel)]="newFeedback"
+          placeholder="Write your feedback here..."
+          rows="4"
+          cols="50"
+          required
+        ></textarea>
+        <br />
+        <button (click)="submitFeedback()" [disabled]="!newFeedback.trim()">Submit</button>
+      </div>
+    <!-- Feedback list -->
+    <div *ngIf="feedbacks.length > 0; else noFeedback">
+      <div *ngFor="let fb of feedbacks" class="feedback-item">
+        <strong> &#64;{{ usernames[fb.userId] || 'Loading...' }}</strong> <em> {{ fb.date | date:'short' }}</em>
+        <p>{{ fb.message }}</p>
+        <!-- {{fb.productId}} -->
+        <hr />
+      </div>
+      
+      
+    </div>
+  
+    <ng-template #noFeedback>
+      <p>No feedback yet. Be the first to leave a comment!</p>
+    </ng-template>
+  
+
+  </div>
+  
+  

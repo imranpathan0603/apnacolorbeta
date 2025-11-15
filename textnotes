@@ -1,0 +1,13 @@
+Error: Schema validation failed with the following errors:
+  Data path "/outputMode" must be equal to one of the allowed values. Allowed values are: "static", "server".
+
+ showing this error 
+
+X [ERROR] The 'customerHome/productDetail/:id' route uses prerendering and includes parameters, but 'getPrerenderParams' is missing. Please define 'getPrerenderParams' function for this route in your server routing configuration or specify a different 'renderMode'.
+
+   "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
+            

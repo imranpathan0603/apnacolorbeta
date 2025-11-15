@@ -1,0 +1,108 @@
+.add-product-container {
+  width: 90%;
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 14px;
+  background: linear-gradient(to right, #ffffff, #f0f4ff);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-product-container h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+  color: #222;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+/* Input styling */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1.8px solid #ccc;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* File input styling */
+.file-input label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.file-input input[type="file"] {
+  border: none;
+  padding: 10px;
+  background-color: #eef1f7;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Submit Button */
+.form-actions {
+  text-align: center;
+}
+
+.form-actions button {
+  padding: 12px 30px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-actions button:hover {
+  background-color: #0056b3;
+}
+
+
+.message,
+.alert {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 6px;
+}
+

@@ -1,0 +1,28 @@
+<nav class="customer-navbar">
+  <div class="nav-left">
+    <a routerLink="/customerHome" class="logo">
+      <img src="apnaColorLogo.png" alt="Apna Color" class="logo-img" />
+     <span id="logo-name"> Apna Color</span>
+    </a>
+  </div>
+
+  <div class="nav-right" [class.open]="menuOpen">
+    <a routerLink="/customerHome/customerProductList" routerLinkActive="active">Products</a>
+    <a routerLink="/customerHome/customerCart" class="cart-link">
+      🛒 Cart
+      <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+    </a>
+    <a routerLink="/customerHome/aboutUs" routerLinkActive="active">About Us</a>
+    <a routerLink="/customerHome/contactUs" routerLinkActive="active">Contact</a>
+    <button (click)="logout()" class="btn">Logout</button>
+  </div>
+
+  <div class="hamburger" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>

@@ -1,0 +1,59 @@
+<div class="add-product-container">
+  <h3>Add Product</h3>
+
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+  
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+
+    <div class="form-group">
+      <input formControlName="name" placeholder="Product Name">
+    </div>
+
+    <div class="form-group">
+      <input formControlName="brand" placeholder="Brand">
+    </div>
+
+    <!-- <div class="form-group">
+      <input formControlName="type" placeholder="Type">
+    </div> -->
+    <div class="form-group">
+      <select formControlName="type" class="form-control">
+        <option value="" disabled selected>Select Type</option>
+        <option value="Exterior">Exterior</option>
+        <option value="Interior">Interior</option>
+      </select>
+    </div>
+    
+
+    <div class="form-group">
+      <input formControlName="color" placeholder="Color">
+    </div>
+
+    <div class="form-group">
+      <input formControlName="price" type="number" placeholder="Price">
+    </div>
+
+    <div class="form-group">
+      <input formControlName="quantity" type="number" placeholder="Quantity">
+    </div>
+
+    <div class="form-group">
+      <textarea formControlName="description" placeholder="Description"></textarea>
+    </div>
+
+    <div class="form-group file-input">
+      <label>Select Product Image:</label>
+      <input type="file" (change)="onFileSelected($event)">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Add Product</button>
+    </div>
+  </form>
+</div>

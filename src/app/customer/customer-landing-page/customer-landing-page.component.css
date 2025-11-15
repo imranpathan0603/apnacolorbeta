@@ -1,0 +1,351 @@
+
+
+.hero-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  position: relative; /* optional if other absolute elements will be placed later */
+}
+
+.hero {
+  position: absolute; /* now the background image or video sits behind the text */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* if it's an img or video */
+  z-index: 0;
+}
+#name{
+  color: rgb(170, 236, 36);
+}
+
+/* type writer effect for user name */
+.typewriter  {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid black;
+  animation: typing 8s steps(60, end) infinite,
+             blink-caret 7.75s step-end infinite;
+}
+
+
+
+/* Typing animation */
+@keyframes typing {
+  0%   { width: 0 }
+  50%  { width: 100% }
+  100% { width: 0 }
+}
+
+/* Cursor blink */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50%      { border-color: black }
+}
+
+
+.hero-text {
+  margin-top: 150px;
+  z-index: 1;
+  color: #ffff;
+  text-align: center;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.hero-text h1 {
+  font-size: 2.5em;
+}
+
+.hero-text p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.hero-text button {
+  padding: 12px 24px;
+  font-size: 1em;
+  background-color: #ff6600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero-text button:hover{
+  background-color: rgb(241, 175, 51);
+}
+
+.hero-text button a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: #f4f4f4;
+;
+}
+
+.feature-card {
+  width: 30%;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+  margin: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.feature-card h3 {
+  color: #ff6f00;
+  margin-bottom: 0.5rem;
+}
+
+/* Express Painting Section */
+
+.xp-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 40px 20px;
+  margin-bottom: 10px;
+}
+
+/* Left section */
+.xp-left {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.xp-left-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.xp-left-content {
+  text-align: center;
+}
+
+.xp-left-content h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.xp-left-content p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.xp-button {
+  padding: 12px 30px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.xp-button:hover {
+  background-color: #0056b3;
+}
+
+/* Right section - Grid of cards */
+.xp-right {
+  flex: 1 1 45%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  min-height: 25%;
+  justify-items: center;
+  box-sizing: border-box;
+}
+
+.xp-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: 0.3s;
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+}
+
+.xp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.xp-card-icon img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.xp-card h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333333dc;
+}
+
+.xp-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ✅ Responsive Fix */
+@media (max-width: 768px) {
+  .xp-left,
+  .xp-right {
+    flex: 1 1 100%;
+  }
+}
+
+
+
+/* Product Option & Image Preview */
+.products-section {
+  width: 100%;
+  display: flex;
+  border: 2px solid #6f42c1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.product-list {
+  flex: 1;
+  background-color: #f8f5ff;
+  padding: 20px;
+}
+
+.typeshow {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.type-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.type-item img {
+  width: 30px;
+  height: 30px;
+}
+
+.type-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+.type-item:hover,
+.type-item.style1 {
+  background-color: #e0d4ff;
+  font-weight: 600;
+}
+
+.product-preview {
+  flex: 2;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  font-size: 15px;
+  color: dimgray;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .xp-section {
+    flex-direction: column;
+  }
+
+  .products-section {
+    flex-direction: column;
+  }
+
+  .product-preview {
+    height: 300px;
+  }
+
+  .feature-card {
+    width: 90%;
+  }
+}
+/* Add shadow and padding to the entire content area */
+.page-container {
+  max-width: 99%;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.938);
+  padding: white 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Set body background to subtle gray to make white content pop */
+/* body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+} */
+
+/* Optional: prevent content from hugging screen edges on mobile */
+@media (max-width: 768px) {
+  .page-container {
+    margin: 10px;
+    padding: 5px;
+  }
+}

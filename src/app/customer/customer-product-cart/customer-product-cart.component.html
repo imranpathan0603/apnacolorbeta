@@ -1,0 +1,132 @@
+
+<div class="cart-container" >
+  <h2>Your Cart</h2>
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  <div class="cart-layout">
+    <!-- 🧾 LEFT SIDE: Cart Table -->
+    <div class="cart-left">
+      <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <p>Your cart is empty. Start adding products!</p>
+      </div>
+    
+      <div class="cart-item-card" *ngFor="let item of cartItems">
+        <div class="item-image">
+          <img [src]="'http://localhost:8080/api/products/' + item.product.id + '/image'" alt="{{ item.product.name }}" />
+        </div>
+    
+        <div class="item-details">
+          <input 
+          type="checkbox" 
+          (change)="onCheckboxChange($event, item.id)" 
+        />
+        
+          <h4>{{ item.product.name }}</h4>
+          <p><strong>ID:</strong> {{ item.product.id }}</p>
+          <p><strong>Price:</strong> ₹{{ item.product.price }}</p>
+          <p><strong>Subtotal:</strong> ₹{{ item.product.price * item.quantity }}</p>
+    
+          <div class="quantity-actions">
+            <label>Quantity:</label>
+            <button (click)="decrementQuantity(item)" class="qty-btn">−</button>
+            <input type="number" [value]="item.quantity" readonly class="qty-input" />
+            <button (click)="incrementQuantity(item)" class="qty-btn">+</button>
+          </div>
+    
+          <button (click)="removeItem(item.id)" class="remove-btn">Remove</button>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- 💵 RIGHT SIDE: Total Summary -->
+    <div class="cart-right" *ngIf="cartItems.length > 0">
+      <h3>Price Summary</h3>
+      <div class="summary-line">
+        <span>Total (without GST):</span>
+        <span>₹{{ getTotalWithoutGST() }}</span>
+      </div>
+      <div class="summary-line">
+        <span>GST (18%):</span>
+        <span>₹{{ getGSTAmount() }}</span>
+      </div>
+      <div class="summary-line total">
+        <span>Grand Total:</span>
+        <span>₹{{ getTotalWithGST() }}</span>
+      </div>
+      <div class="payment-container">
+        <label for="paymentMethod">Choose Payment Method:</label>
+        <select id="paymentMethod" [(ngModel)]="selectedPaymentMethod" class="payment-select">
+          <option value="UPI">UPI</option>
+          <option value="CARD">Card</option>
+          <option value="COD">Cash on Delivery</option>
+        </select>
+      
+        <button (click)="buySelectedItems()" class="buy-btn">
+          Buy Selected Items
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="cart-container">
+    <h2>Your Cart</h2>
+  
+    <div *ngIf="cartItems.length === 0">
+      <p>Your cart is empty.</p>
+    </div>
+  
+    <table  *ngIf="cartItems.length > 0">
+      <thead>
+        <tr>
+          <th>Product Id</th>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.product.id }}</td>
+          <td>
+            <img [src]="'http://localhost:8080/api/products/' + item.product.id + '/image'" alt="{{ item.product.name }}" class="product-image" width="50" />
+          </td>
+          
+          <td>{{ item.product.name }}</td>
+          <td>₹{{ item.product.price }}</td>
+          
+          <div class="quantity-container">
+            <button (click)="decrementQuantity(item)" class="qty-btn">-</button>
+            <input type="number" [value]="item.quantity" readonly class="qty-input" />
+            <button (click)="incrementQuantity(item)" class="qty-btn">+</button>
+          </div>
+          
+          <td>₹{{ item.product.price * item.quantity }}</td>
+          <td>
+            <button (click)="removeItem(item.id)" class="remove-btn">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="total" *ngIf="cartItems.length > 0">
+      <h3>Total: ₹{{ getTotal() }}</h3>
+    </div>
+  </div>
+  
+
+ 
+   -->

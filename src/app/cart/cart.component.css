@@ -1,0 +1,175 @@
+/* Center container horizontally and give it 90% width max 1200px */
+.cart-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto; /* top-bottom 2rem, auto left-right to center */
+  padding: 2rem 2.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+/* Header styles */
+th {
+  background-color: #007acc;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Product image */
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Quantity container styling */
+.quantity-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+}
+
+.qty-btn {
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.qty-btn:hover {
+  background-color: #005fa3;
+}
+
+.qty-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 6px 0;
+  pointer-events: none; /* readonly effect */
+  background-color: #f9f9f9;
+}
+
+/* Remove button styling */
+.remove-btn {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Total price section */
+.total {
+  margin-top: 30px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: right;
+  color: #222;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 1.5rem 1rem;
+  }
+
+  th, td {
+    padding: 10px 8px;
+  }
+
+  .product-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .qty-btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+
+  .qty-input {
+    width: 40px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Make the whole viewport a flex container to center the cart */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;      /* centers vertically */
+  background-color: #f9fafb; /* light background for contrast */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Your cart container can keep max-width and padding */
+.cart-container {
+  max-width: 900px;
+  width: 90vw;  /* responsive width */
+  padding: 2rem 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  color: #2c3e50;
+}
+
+.remove-btn {
+  background-color: #e74c3c; /* bright red */
+  color: #fff;               /* white text */
+  border: none;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.4);
+}
+
+.remove-btn:hover {
+  background-color: #c0392b; /* darker red on hover */
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.6);
+}
+
+.remove-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.5);
+}

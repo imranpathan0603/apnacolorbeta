@@ -1,0 +1,18 @@
+<div class="product-container">
+  <div class="product-card" *ngFor="let p of products">
+    <!-- <img [src]="'http://localhost:8080/api/products/' + p.id + '/image'" alt="{{ p.name }}" class="product-image" /> -->
+    <img [src]="getProductImageUrl(p.id)" alt="{{ p.name }}" class="product-image" />
+
+
+
+    <h3 class="product-name">{{ p.name }}</h3>
+    <p class="product-brand">Brand: {{ p.brand }}</p>
+    <p class="product-type">Type: {{ p.type }}</p>
+    <p class="product-price"> {{ p.price| currency:'INR' }}</p>
+    <!-- <p class="product-description">{{ p.description }}</p> -->
+    <button (click)="addToCart(p.id)">Add to Cart</button>
+  </div>
+  
+  
+
+</div>

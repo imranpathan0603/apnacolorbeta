@@ -1,0 +1,80 @@
+<h2>Admin - Product List</h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th><th>Name</th><th>Brand</th> <th>Type</th><th>Price</th><th>Quantity</th><th colspan="2">Actions</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{ product.id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.brand }}</td>
+    <td>{{product.type}}</td>
+    <td>{{ product.price }}</td>
+    <td>{{product.quantity}}</td>
+    <td>
+      <button (click)="editProduct(product)">Edit</button>
+    </td>
+    <td><button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button></td>
+  </tr>
+</table>
+
+<!-- Update Form
+<div *ngIf="flag">
+  <h3>Edit Product</h3>
+  <form (ngSubmit)="updateProduct()">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="selectedProduct.name" name="name"><br>
+
+    <label>Brand:</label>
+    <input type="text" [(ngModel)]="selectedProduct.brand" name="brand"><br>
+
+    <label>Price:</label>
+    <input type="number" [(ngModel)]="selectedProduct.price" name="price"><br>
+
+    <label>Quantity:</label>
+    <input type="number" [(ngModel)]="selectedProduct.quantity" name="quantity"><br>
+
+    <label>Description:</label>
+    <textarea [(ngModel)]="selectedProduct.description" name="description"></textarea><br>
+
+    <button type="submit">Update</button>
+    <button type="button" (click)="flag=false">Cancel</button>
+  </form>
+</div> -->
+
+
+<div *ngIf="flag" class="edit-form-container">
+    <h3>Edit Product</h3>
+    <form (ngSubmit)="updateProduct()">
+      <div class="form-group">
+        <label>Name:</label>
+        <input type="text" [(ngModel)]="selectedProduct.name" name="name">
+      </div>
+  
+      <div class="form-group">
+        <label>Brand:</label>
+        <input type="text" [(ngModel)]="selectedProduct.brand" name="brand">
+      </div>
+  
+      <div class="form-group">
+        <label>Price:</label>
+        <input type="number" [(ngModel)]="selectedProduct.price" name="price">
+      </div>
+  
+      <div class="form-group">
+        <label>Quantity:</label>
+        <input type="number" [(ngModel)]="selectedProduct.quantity" name="quantity">
+      </div>
+  
+      <div class="form-group">
+        <label>Description:</label>
+        <textarea [(ngModel)]="selectedProduct.description" name="description"></textarea>
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit">Update</button>
+        <button type="button" (click)="flag=false" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

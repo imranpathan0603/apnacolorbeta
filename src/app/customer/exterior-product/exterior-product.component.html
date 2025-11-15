@@ -1,0 +1,100 @@
+<div class="carousel">
+    <div
+      class="slides"
+      [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+    >
+      <div class="slide" *ngFor="let slide of slides">
+        <img [src]="slide.img" />
+        <div class="overlay">
+          <h2>{{ slide.title }}</h2>
+          <p>{{ slide.description }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <button class="nav prev" (click)="prev()">❮</button>
+    <button class="nav next" (click)="next()">❯</button>
+  
+    <div class="dots">
+      <span
+        *ngFor="let slide of slides; let i = index"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+      ></span>
+    </div>
+  </div>
+  
+  <div class="product-container">
+    <div class="filters">
+      <!-- Brand Filter -->
+      <label>Brand:</label>
+      <select [(ngModel)]="selectedBrand" (change)="applyFilters()">
+        <option value="">All</option>
+        <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+      </select>
+    </div>
+  
+    <div class="product-card" *ngFor="let p of filteredProducts">
+      <a [routerLink]="['/customerHome/productDetail', p.id]">
+        <img [src]="getProductImageUrl(p.id)" alt="{{ p.name }}" class="product-image" />
+      </a>
+      <h3 class="product-name">{{ p.name }}</h3>
+      <p class="product-brand">Brand: {{ p.brand }}</p>
+      <p class="product-type">Type: {{ p.type }}</p>
+      <p class="product-price">$ {{ p.price }}</p>
+  
+      <button (click)="addToCart(p.id)">Add to Cart</button>
+    </div>
+  </div>
+  <div
+    class="interior-blog d-flex flex-column align-items-center"
+    style="padding: 40px 0"
+  >
+    <div class="card mb-3" style="max-width: 90%">
+        <div class="card mb-3" style="max-width: 90%">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=80"
+                  class="img-fluid rounded-start"
+                  alt="Modern Exterior"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Modern & Minimal Exterior Designs</h5>
+                  <p class="card-text">
+                    Today’s exteriors blend clean lines with natural textures, offering a balance
+                    of durability and elegance. Materials like stone, concrete, and wood bring timeless
+                    character, while muted colors reflect modern sophistication. A well-chosen exterior
+                    color palette can elevate curb appeal and add personality to your home.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card mb-3" style="max-width: 90%">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+                  class="img-fluid rounded-start"
+                  alt="Warm Exterior"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Warm & Inviting Colors</h5>
+                  <p class="card-text">
+                    Warm earth tones like terracotta, sandstone, and ochre create a welcoming vibe
+                    for any home exterior. These hues blend beautifully with surrounding landscapes and
+                    provide a sense of comfort and rootedness. Ideal for traditional homes or modern villas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  </div>
+  

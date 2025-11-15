@@ -1,0 +1,47 @@
+<div class="product-container">
+
+  <div class="filters">
+    <!-- Product Type Filter -->
+    <label>Product Type:</label>
+    <select [(ngModel)]="selectedType" (change)="applyFilters()">
+      <option value="">All</option>
+      <option value="Interior">Interior</option>
+      <option value="Exterior">Exterior</option>
+    </select>
+
+    <!-- Brand Filter -->
+    <label>Brand:</label>
+    <select [(ngModel)]="selectedBrand" (change)="applyFilters()">
+      <option value="">All</option>
+      <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+    </select>
+  </div>
+
+  <div class="product-card" *ngFor="let p of filteredProducts">
+    <!-- <img [src]="getProductImageUrl(p.id)" alt="{{ p.name }}" class="product-image" /> -->
+    <a [routerLink]="['/customerHome/productDetail', p.id]">
+      <img [src]="getProductImageUrl(p.id)" alt="{{ p.name }}" class="product-image" />
+    </a>
+    
+    <h3 class="product-name">{{ p.name }}</h3>
+    <p class="product-brand">Brand: {{ p.brand }}</p>
+    <p class="product-type">Type: {{ p.type }}</p>
+    <p class="product-price"> {{ p.price | currency: 'INR'}}</p>
+    <p class="product-quantity" *ngIf ="p.quantity <=0" style="color:red">  out of stock </p>
+    
+    <!-- <div class="product-sizes">
+      <label *ngFor="let size of sizes">
+        <input 
+          type="radio" 
+          name="size-{{ p.id }}" 
+          [value]="size" 
+          [(ngModel)]="p.selectedSize" 
+        />
+        {{ size }}L
+      </label>
+    </div>
+   -->
+    <button (click)="addToCart(p.id)" [disabled]="p.quantity <= 0" >Add to Cart</button>
+  </div>
+
+</div>

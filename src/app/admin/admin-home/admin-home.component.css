@@ -1,0 +1,84 @@
+.admin-navbar {
+    background-color: #1f3a93;
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  
+  
+  .nav-right {
+    display: flex;
+    gap: 18px;
+    transition: max-height 0.3s ease;
+  
+  }
+
+ 
+  
+  .nav-right a ,.nav-left a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    padding: 6px 0;
+  }
+  .logo {
+    font-size: 2.0rem;
+    font-weight: bold;
+  }
+  
+  .nav-right a:hover,
+  .nav-right a.active {
+    border-bottom: 2px solid #ffdd59;
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+  }
+  
+  .hamburger span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    border-radius: 2px;
+  }
+
+
+  
+  @media (max-width: 768px) {
+    .nav-right {
+      flex-direction: column;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      background-color: #1f3a93;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding-left: 24px;
+
+    
+    }
+  
+    .nav-right.open {
+      max-height: 300px;
+      padding-bottom: 10px;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+    .nav-right .btn{
+      color: white;
+    }
+  }
+
+  
+

@@ -1,0 +1,31 @@
+
+  <nav class="admin-navbar">
+    <div class="nav-left">
+      <!-- <span class="logo"><a > Apna Color</a></span> -->
+      <a routerLink="/adminHome" routerLinkActive="active" class="logo"
+        >Apna Color</a
+      >
+    </div>
+  
+    <div class="nav-right" [class.open]="menuOpen">
+      <a routerLink="/adminHome/productList" routerLinkActive="active"
+        >Products List</a
+      >
+      <a routerLink="/adminHome/adminAdd" routerLinkActive="active"
+        >Add Product</a
+      >
+      <a routerLink="/adminHome/adminUpdate" routerLinkActive="active">Update</a>
+      <a routerLink="/adminHome/userManagement" routerLinkActive="active">Users</a>
+      <a routerLink="/adminHome/cart" routerLinkActive="active">🛒 Cart</a>
+      <button (click)="logout()" class="btn btn btn-light">Logout</button>
+    </div>
+  
+    <div class="hamburger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
+<!-- <app-admin-landing-page *ngIf="landingPage"></app-admin-landing-page> -->

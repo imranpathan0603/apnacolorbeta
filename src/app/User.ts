@@ -1,0 +1,20 @@
+export class User{
+   id:number
+    username:string
+    contactNo:string
+    email:string
+    address:string
+    password:string
+    role:string;
+     constructor(ui:number,un:string,cn:string,em:string,add:string,
+        pass:string,role:string
+     ){
+      this.id=ui
+        this.username=un;
+        this.contactNo=cn;
+        this.email=em;
+        this.address=add;
+        this.password=pass;
+        this.role=role
+     }
+}

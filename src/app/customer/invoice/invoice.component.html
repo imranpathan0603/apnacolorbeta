@@ -1,0 +1,40 @@
+
+<div *ngIf="bill"  style="margin-bottom: 40px;">
+<div *ngIf="bill" id="invoice" class="invoice-container">
+    <h2>Invoice</h2>
+    <p><strong>Invoice No:</strong> {{ bill.invoiceNo }}</p>
+    <p><strong>Date:</strong> {{ bill.date | date:'medium' }}</p>
+    <p><strong>Customer:</strong> {{ bill.username }}</p>
+    <p><strong>Payment Method:</strong> {{ bill.paymentMethod }}</p>
+    <!-- <p><strong>Status:</strong> {{ bill.status }}</p> -->
+  
+    <hr />
+    <h3>Items</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of bill.items">
+          <td>{{ item.productName }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price | currency:'INR' }}</td>
+          <!-- <td>{{ item.price * item.quantity | currency }}</td> -->
+          <td>{{ item.price * item.quantity | currency :'INR'}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <h4>Total: {{ bill.totalAmount | currency:'INR' }}</h4>
+    
+</div>
+
+<button (click)="downloadInvoice()" class="btn btn-primary mt-3">Download PDF</button>
+</div>
+  

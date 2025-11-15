@@ -1,0 +1,24 @@
+<div class="color-visualizer-container" >
+  <h2>Try Colors on the Wall</h2>
+
+  <div class="room-visualizer">
+    <img src="visulizer.jpg" alt="Room" class="room-image" />
+    <div
+      class="wall-overlay"
+      [ngStyle]="{ 'background-color': selectedColor }"
+    >
+
+</div>
+  </div>
+
+  <div class="color-options">
+    <div
+      class="color-swatch"
+      *ngFor="let color of colorOptions"
+      [style.backgroundColor]="color"
+      (click)="changeColor(color)"
+    >
+      <div class="color-label">{{ color }}</div>
+    </div>
+  </div>
+</div>

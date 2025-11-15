@@ -1,0 +1,105 @@
+<div class="carousel">
+  <div
+    class="slides"
+    [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+  >
+    <div class="slide" *ngFor="let slide of slides">
+      <img [src]="slide.img" />
+      <div class="overlay">
+        <h2>{{ slide.title }}</h2>
+        <p>{{ slide.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="nav prev" (click)="prev()">❮</button>
+  <button class="nav next" (click)="next()">❯</button>
+
+  <div class="dots">
+    <span
+      *ngFor="let slide of slides; let i = index"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+    ></span>
+  </div>
+</div>
+
+<div class="product-container">
+  <div class="filters">
+    <!-- Brand Filter -->
+    <label>Brand:</label>
+    <select [(ngModel)]="selectedBrand" (change)="applyFilters()">
+      <option value="">All</option>
+      <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+    </select>
+  </div>
+
+  <div class="product-card" *ngFor="let p of filteredProducts">
+    <a [routerLink]="['/customerHome/productDetail', p.id]">
+      <img [src]="getProductImageUrl(p.id)" alt="{{ p.name }}" class="product-image" />
+    </a>
+
+    <h3 class="product-name">{{ p.name }}</h3>
+    <p class="product-brand">Brand: {{ p.brand }}</p>
+    <p class="product-type">Type: {{ p.type }}</p>
+    <p class="product-price">Rs {{ p.price }}</p>
+
+    <button (click)="addToCart(p.id)">Add to Cart</button>
+  </div>
+</div>
+<div
+  class="interior-blog d-flex flex-column align-items-center"
+  style="padding: 40px 0"
+>
+  <div class="card mb-3" style="max-width: 90%">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/interior/interior1.png"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Comfort in Design and Color</h5>
+          <p class="card-text">
+            In the world of design, comfort is more than just soft cushions and
+            ergonomic chairs — it’s also about how a space feels. And that
+            feeling is deeply tied to color. Whether you’re decorating a home,
+            choosing a new outfit, or picking the perfect wall paint,
+            understanding the connection between comfort and color can make a
+            huge difference.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 90%">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/interior/interior 3.png"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">The Psychology of Color & Comfort</h5>
+          <p class="card-text">
+            Blues: Often associated with calm, trust, and relaxation. Perfect
+            for bedrooms or quiet workspaces. Greens: Brings a sense of balance
+            and freshness. Often used in wellness or eco-friendly themes.
+            Neutrals (beige, gray, off-white): Provide a calming, timeless base
+            that pairs well with almost anything. Soft Pastels: Pinks, lavender,
+            and mint evoke softness and are often linked to serenity and
+            creativity. Warm Earth Tones (terracotta, mustard, olive): Create
+            cozy, grounded spaces that feel welcoming.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
