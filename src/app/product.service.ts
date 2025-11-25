@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 export interface ProductInterface {
   id: number;
@@ -19,8 +20,9 @@ export interface ProductInterface {
   providedIn: 'root'
 })
 export class ProductService {
-
-  private baseUrl = 'http://localhost:8080/api';  // Change to your backend URL
+// 
+  // private baseUrl = 'http://localhost:8080/api';  // Change to your backend URL
+  private baseUrl = environment.apiBaseUrl+'/api';  // Change to your backend URL
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +32,7 @@ export class ProductService {
   }
 
   addProduct(formData: FormData) {
-  return this.http.post('http://localhost:8080/api/products/add', formData);
+  return this.http.post(`${this.baseUrl}/products/add`, formData);
 }
 updateProduct(id: number, product: ProductInterface): Observable<ProductInterface> {
   return this.http.put<ProductInterface>(`${this.baseUrl}/products/${id}`, product);
@@ -42,7 +44,8 @@ deleteProduct(id: number): Observable<string> {
 
 
 searchProducts(query: string): Observable<ProductInterface[]> {
-  return this.http.get<ProductInterface[]>(`http://localhost:8080/api/products/search?q=${query}`);
+  // return this.http.get<ProductInterface[]>(`http://localhost:8080/api/products/search?q=${query}`);
+  return this.http.get<ProductInterface[]>(`${this.baseUrl}/products/search?q=${query}`);
 }
 
 

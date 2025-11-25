@@ -3,6 +3,7 @@ import { ProductInterface } from './product.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, tap } from 'rxjs';
+import { environment } from '../environments/environment';
 
 export interface CartItemInterface {
   id: number; // cart item id
@@ -15,7 +16,8 @@ export interface CartItemInterface {
 })
 export class CartService {
 
-  private baseUrl = 'http://localhost:8080/api/cart';
+  // private baseUrl = 'http://localhost:8080/api/cart';
+  private baseUrl = environment.apiBaseUrl+'/api/cart';
   
   private cartItems: any[] = [];
   private cartCount = new BehaviorSubject<number>(0);

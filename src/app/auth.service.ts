@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { tap } from 'rxjs/operators';
+// import { tap } from 'rxjs/operators';
+import { environment } from '../environments/environment';
+
 
 interface UserInterface {
   id:number;
@@ -29,18 +31,19 @@ export interface UserDto {
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/auth';
+  // private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = environment.apiBaseUrl;
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
-    return this.http.post<LoginResponse>(this.baseUrl.concat('/login'), {
+    return this.http.post<LoginResponse>(this.baseUrl.concat('/auth/login'), {
       username,
       password,
     });
   }
 
   getUserById(id: number): Observable<UserDto> {
-    return this.http.get<UserDto>(`${this.baseUrl}/${id}`);
+    return this.http.get<UserDto>(`${this.baseUrl}/auth/${id}`);
   }
 
 
@@ -49,7 +52,7 @@ export class AuthService {
   // }
 
   signup(user: any): Observable<any> {
-    return this.http.post('http://localhost:8080/auth/signup', user, {
+    return this.http.post(`${this.baseUrl}/auth/signup`, user, {
       responseType: 'text'
     });
   }
@@ -75,10 +78,10 @@ export class AuthService {
 
   // for user management
   getAllUsers(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>(`${this.baseUrl}/all`);
+    return this.http.get<UserInterface[]>(`${this.baseUrl}/auth/all`);
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/auth/${id}`);
   }
 }
