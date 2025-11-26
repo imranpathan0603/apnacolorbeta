@@ -197,9 +197,10 @@ export class AppComponent implements OnInit {
       },
       error: (err) => {
         this.successMessage = ''; // Clear any old success
-        this.errorMessage = `Failed to add user: ${
-          err.message || err.statusText || err
-        }`;
+        // this.errorMessage = `Failed to add user: ${
+        //   err.message || err.statusText || err
+        // }`;
+        this.errorMessage="Please enter valid user name and password"
       },
     });
   }
