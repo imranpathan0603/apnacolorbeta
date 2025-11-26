@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService, UserDto } from '../../auth.service';
 import { Feedback, FeedbackService } from '../../feedback.service';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -56,7 +57,8 @@ export class ProductDetailsComponent implements OnInit {
 
   // Generate the product image URL
   getProductImageUrl(productId: number): string {
-    return `http://localhost:8080/api/products/${productId}/image`;
+    // return `http://localhost:8080/api/products/${productId}/image`;
+    return `${environment.apiBaseUrl}/api/products/${productId}/image`;
   }
 
   // Add the product to the user's cart

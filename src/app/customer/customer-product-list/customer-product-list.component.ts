@@ -5,6 +5,7 @@ import { AuthService } from '../../auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterModule } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-customer-product-list',
@@ -87,6 +88,6 @@ export class CustomerProductListComponent implements OnInit {
   }
 
   getProductImageUrl(productId: number): string {
-    return `http://localhost:8080/api/products/${productId}/image`;
+    return `${environment.apiBaseUrl}/api/products/${productId}/image`;
   }
 }

@@ -5,6 +5,7 @@ import { ProductInterface, ProductService } from '../../product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-exterior-product',
@@ -125,7 +126,7 @@ export class ExteriorProductComponent {
     }
   
     getProductImageUrl(productId: number): string {
-      return `http://localhost:8080/api/products/${productId}/image`;
+      return `${environment.apiBaseUrl}/api/products/${productId}/image`;
     }
 
 
