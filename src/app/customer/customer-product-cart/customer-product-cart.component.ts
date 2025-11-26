@@ -21,6 +21,7 @@ export class CustomerProductCartComponent implements OnInit {
   userId: number = Number(sessionStorage.getItem('userId'));
   successMessage:string='';
   errorMessage:string='';
+// apiurl =`${environment.apiBaseUrl}/api/products/`;
 
 
   constructor(
