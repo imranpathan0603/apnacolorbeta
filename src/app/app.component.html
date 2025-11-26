@@ -1,161 +1,128 @@
+<!-- auth.component.html -->
 
+<!-- Show auth screen only if NOT logged in -->
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" class="auth-page">
 
-<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
-  <!-- Show login/signup only when NOT logged in -->
-  <div *ngIf="status" class="body">
-    <!-- Login Form -->
-    <div *ngIf="flag" class="login-container">
-      <div *ngIf="successMessage" class="alert alert-success">
-        {{ successMessage }}
-      </div>
-  
-      <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-      </div>
-      <!-- your login form here -->
-      <h2 class="login-heading">Login</h2>
+  <!-- LOGIN BLOCK -->
+  <div *ngIf="status && flag" class="auth-card">
+    <!-- Messages -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
 
+    <h2 class="auth-title">Login</h2>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
       <input
         [(ngModel)]="username"
+        name="username"
         type="text"
         placeholder="Username"
         class="form-input"
         required
       />
+
       <input
         [(ngModel)]="password"
+        name="password"
         type="password"
         placeholder="Password"
         class="form-input"
         required
       />
 
-      <button (click)="login()" class="login-button">Login</button><br />
+      <button type="submit" class="primary-btn">Login</button>
 
-      <button (click)="Show()" class="btn btn-primary">Signup</button>
+      <button type="button" (click)="Show()" class="secondary-btn">
+        Go to Signup
+      </button>
 
       <p class="message">{{ message }}</p>
-
-      <!-- <p class="debug">{{ username }}</p>
-      <p class="debug">{{ password }}</p> -->
-    </div>
-    <!-- <div *ngIf="isAdminLoggedIn === true" class="admin-div">
-        Admin Div
-      </div>
-    
-      <div *ngIf="isCustomerLoggedIn === true" class="customer-div">
-        Customer Div!
-      </div> 
-   -->
-    <!-- Admin/Customer Messages (optional) -->
-    <div *ngIf="isAdminLoggedIn">Admin Div</div>
-    <div *ngIf="isCustomerLoggedIn">Customer Div</div>
+    </form>
   </div>
 
-  <!-- Signup Section -->
-  <div *ngIf="!status">
-    <!-- your signup form here -->
+  <!-- SIGNUP BLOCK -->
+  <div *ngIf="!status" class="auth-card">
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
 
-    <div class="body">
-      <div *ngIf="successMessage" class="alert alert-success">
-        {{ successMessage }}
-      </div>
-
-      <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-      </div>
-
+    <div *ngIf="errorMessage" class="alert alert-danger">
       {{ errorMessage }}
-      <div class="container mt-5">
-        <h2 class="mb-4">User Registration</h2>
-        <form (ngSubmit)="signup()">
-          <div class="row mb-3">
-            <div class="col">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="user name"
-                [(ngModel)]="user.username"
-                name="username"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Contact Number"
-              [(ngModel)]="user.contactNo"
-              name="contactNo"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Email"
-              [(ngModel)]="user.email"
-              name="email"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Address"
-              [(ngModel)]="user.address"
-              name="address"
-              required
-            />
-          </div>
-          <!-- <div class="mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Role"
-              [(ngModel)]="user.role"
-              name="role"
-              required
-            />
-          </div> -->
-          <div class="mb-3">
-            <select class="form-control" [(ngModel)]="user.role" name="role" required>
-              <option value="" disabled selected>Select Role</option>
-              <option value="ADMIN">ADMIN</option>
-              <option value="CUSTOMER">CUSTOMER</option>
-            </select>
-          </div>
-          
-          
-
-          <div class="mb-3">
-            <input
-              type="password"
-              class="form-control"
-              placeholder="Password"
-              [(ngModel)]="user.password"
-              name="password"
-              required
-            />
-          </div>
-
-          <button type="submit" class="btn btn-primary">Register</button><br />
-          <button (click)="Show()" class="btn btn-primary">Login</button>
-        </form>
-      </div>
     </div>
+
+    <h2 class="auth-title">User Registration</h2>
+
+    <form (ngSubmit)="signup()" #signupForm="ngForm">
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Username"
+        [(ngModel)]="user.username"
+        name="username"
+        required
+      />
+
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Contact Number"
+        [(ngModel)]="user.contactNo"
+        name="contactNo"
+        required
+      />
+
+      <input
+        type="email"
+        class="form-input"
+        placeholder="Email"
+        [(ngModel)]="user.email"
+        name="email"
+        required
+      />
+
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Address"
+        [(ngModel)]="user.address"
+        name="address"
+        required
+      />
+
+      <select
+        class="form-input"
+        [(ngModel)]="user.role"
+        name="role"
+        required
+      >
+        <option value="" disabled>Select Role</option>
+        <option value="ADMIN">ADMIN</option>
+        <option value="CUSTOMER">CUSTOMER</option>
+      </select>
+
+      <input
+        type="password"
+        class="form-input"
+        placeholder="Password"
+        [(ngModel)]="user.password"
+        name="password"
+        required
+      />
+
+      <button type="submit" class="primary-btn">Register</button>
+
+      <button type="button" (click)="Show()" class="secondary-btn">
+        Go to Login
+      </button>
+    </form>
   </div>
 </div>
 
-<div *ngIf="isAdminLoggedIn ===true || isCustomerLoggedIn ===true">
-
+<!-- When logged in, show routed content -->
+<div *ngIf="isAdminLoggedIn || isCustomerLoggedIn">
   <router-outlet></router-outlet>
-
 </div>
-
